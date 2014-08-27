@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, IE=10">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title>Identify with Popup</title>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.10/js/dojo/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="http://archive.dojotoolkit.org/nightly/dojotoolkit/dojox/layout/resources/ExpandoPane.css">
+    <style>
+      html, body {
+        height:100%;
+        width:100%;
+        margin:0;
+        padding:0;
+      }
+      html, body, h1 {
+        font-size: 1.2em;
+        margin-top: 0px;
+       
+      }
+      #cp {
+        height: 1.8em;
+        top: 0px;
+      }
+      #cp, h1, img {
+        float: left;
+        padding-right: 0.5em;
+      }
+    </style>
+    
+    <script type="text/javascript" src="javascript/dojo/dojo.js"></script>
+    <script>
+    
+    require([
+      "dojox/layout/ExpandoPane", 
+      "dojo/data/ItemFileReadStore",
+      // "esri/Color",
+      "dojo/on",
+      "dojo/dom", 
+      "dojo/query", 
+      "dijit/registry",
+      "dijit/Tree",
+      "dojo/parser", 
+      "dijit/layout/BorderContainer", 
+      "dijit/layout/ContentPane", 
+      "dijit/layout/AccordionContainer", 
+      "dijit/TitlePane", 
+      "dijit/form/Button", 
+      "dijit/form/RadioButton", 
+      "dojo/domReady!"
+      ], function(ExpandoPane, ItemFileReadStore, on, dom, query, registry, Tree, parser, BorderContainer, ContentPane, AccordionContainer, TitlePane, Button, RadioButton) {
+          
+        parser.parse();
+        
+      }); // end of require block
+      
+    </script>
+  </head>
+
+  <body class="claro">
+    <div data-dojo-type="dijit/layout/BorderContainer" 
+         data-dojo-props="design:'headline', gutters:false" 
+         style="width:100%;height:100%;margin:0;">
+      <div data-dojo-type="dijit/layout/ContentPane" id="cp"
+        data-dojo-props="region: 'top'">
+        <img src="images/yourLOGO.gif" width="64" height="48" alt="Garrett County Logo" />
+        <h1>Garrett County WebMap &#045; Help Documentation</h1>
+      </div><!-- #cp CONTENT PANE -->
+
+      
+      <div data-dojo-type="dojox.layout.ExpandoPane" title="Table of Contents"
+           data-dojo-props="region:'left', design:'footer', gutters:true, liveSplitters:true, startExpanded:true, easeIn:'expoInOut', easeOut:'expoInOut', duration:600" 
+           style="height:390px;">
+
+
+        <div data-dojo-type="dijit.layout.AccordionContainer" data-dojo-props="closable:false,  open:false">
+
+          <div data-dojo-type="dijit/layout/ContentPane" title="Topics" data-dojo-props="region:'center'" style="width:300px; margin-top:0; padding:0;">
+            <div dojoType="dijit.Tree" store="continentStore" query="{type:'continent'}"
+              labelAttr="name" typeAttr="type" label="Toolkit API">            
+            </div>
+            Item 1: <br />      
+          </div><!-- Topics -->
+        </div><!-- Accordion Container -->
+      </div><!-- Expando Pane -->
+    </div><!-- Border Container -->
+  </body>
+</html>

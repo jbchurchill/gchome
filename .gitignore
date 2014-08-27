@@ -1,0 +1,5 @@
+.tmp*
+javascript/dojo/*
+javascript/dijit/*
+javascript/dojox/*
+javascript/util/*

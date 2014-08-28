@@ -75,8 +75,12 @@
 
 
         <div data-dojo-type="dijit.layout.AccordionContainer" data-dojo-props="closable:false,  open:false">
+          <div dojoType="dojo.data.ItemFileReadStore" data-dojo-id="continentStore"
+            url="javascript/dijit/tests/_data/topics.json">      
+          </div>
 
           <div data-dojo-type="dijit/layout/ContentPane" title="Topics" data-dojo-props="region:'center'" style="width:300px; margin-top:0; padding:0;">
+          
             <div dojoType="dijit.Tree" store="continentStore" query="{type:'continent'}"
               labelAttr="name" typeAttr="type" label="Toolkit API">            
             </div>

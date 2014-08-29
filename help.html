@@ -35,18 +35,12 @@
     <script type="text/javascript" src="javascript/dojo/dojo.js"></script>
     <script>
       function doClick(item){
-        console.log(typeof(item.link));
-        // if(!typeof(item.link) == 'undefined'){
         if(typeof(item.link) === 'object'){
-          console.log("Not undefined");
-          // your code here.
           // location.href = item.link;
           node = document.getElementById("cpInnerContentArea");
           node.innerHTML = "Type: " + item.type + "<br />Population: " + item.population + "<br />Area: " + item.area + "<br />";
         };
-      }      
-
-
+      }
     
     require([
       "dojo/_base/window", "dojo/store/Memory",

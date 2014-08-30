@@ -38,27 +38,46 @@
         var subContent = "";
         var subHeader = "";
         var idContent = "";
-        if(typeof(item.subHeader) === 'object'){
+        var subContent = "";
+        if(typeof(item.subheader) === 'object'){
           subHeader = item.subheader;
         }
         if(typeof(item.subcontent) === 'object'){
           subContent = item.subcontent;
         }
         if(typeof(item.content) === 'object'){
-          if (item.content === "#") {
-            idContent = item.content + " Sheah right !"; // item.children[0]._reference; // item.children[0]['_reference'];
+          // If content is set to "#", then set the content to a list of the children.
+          if (item.link == "$LIST") {
+            numChildren = item.children.length;
+            idContent = "<ul>";
+            for (var i = 0; i < numChildren; i++) {
+              idContent += "<li>" + item.children[i].id + "</li>";
+            }
+            idContent += "</ul>";
+          } else if (item.link == "#"){
+            if(item.content == "#"){
+              idContent = ""; // link and content are both "#" so display nothing
+            } else {
+              idContent = item.content;
+            }  
           } else {
-            idContent = item.content;
+            idContent = ""; // link is not "$LIST" or "#"
           }
         }
+        
+        // NOW SET INNER HTML
         if(typeof(item.link) === 'object'){
           // location.href = item.link;
           node = document.getElementById("cpInnerContentArea");
           if (item.type == "teaser" || item.type == "content") {
             node.innerHTML = "<h2>" + item.header + "</h2>" + "<h3>" + subHeader + "</h3>" + 
             "<p>" + idContent + "</p>" + "<p>" + subContent + "</p>";
-          } else if (item.type == "sub-content") {
-            node.innerHTML = "THIS IS SUB-CONTENT";
+          } else if (item.type == "subcontent") {
+            if(typeof(item.layerid) === 'object'){
+              node.innerHTML = "<h4>Layer Description</h4>" + subContent;
+            } else {
+              node.innerHTML = subContent;
+            }
           }
           else {
             node.innerHTML = "Type: " + item.type + "<br />Population: " + item.population + "<br />Area: " + item.area + "<br />";
@@ -111,7 +130,6 @@
         <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'" title="ContentArea" id="cpInnerContentArea">
         </div>
 
-      <!--<div data-dojo-type="dijit/layout/BorderContainer" id="bcOuterContentArea"><!--  -->
         <div data-dojo-type="dojox.layout.ExpandoPane" title="Table of Contents"
              data-dojo-props="region:'left', design:'footer', gutters:true, liveSplitters:true, startExpanded:true, easeIn:'expoInOut', easeOut:'expoInOut', duration:600" 
              style="height:390px;">
@@ -124,11 +142,9 @@
   
             <div data-dojo-type="dijit/layout/ContentPane" title="Topics" data-dojo-props="region:'center'" style="width:300px; margin-top:0; padding:0;">
             
-              <div dojoType="dijit.Tree" store="continentStore" query="{type:'teaser'}" data-dojo-props="onClick: doClick" 
-              <!--function(item) {location.href = item.link;}"--></div>
-                labelAttr="name" typeAttr="type" label="Toolkit API">            
+              <div dojoType="dijit.Tree" store="continentStore" query="{type:'teaser'}" data-dojo-props="onClick: doClick"> 
               </div>
-              Item 1: <br />      
+              </div>
             </div><!-- Topics -->
           </div><!-- Accordion Container -->
         </div><!-- Expando Pane -->

@@ -35,16 +35,36 @@
     <script type="text/javascript" src="javascript/dojo/dojo.js"></script>
     <script>
       function doClick(item){
+        var subContent = "";
+        var subHeader = "";
+        var idContent = "";
+        if(typeof(item.subHeader) === 'object'){
+          subHeader = item.subheader;
+        }
+        if(typeof(item.subcontent) === 'object'){
+          subContent = item.subcontent;
+        }
+        if(typeof(item.content) === 'object'){
+          if (item.content === "#") {
+            idContent = item.content + " Sheah right !"; // item.children[0]._reference; // item.children[0]['_reference'];
+          } else {
+            idContent = item.content;
+          }
+        }
         if(typeof(item.link) === 'object'){
           // location.href = item.link;
           node = document.getElementById("cpInnerContentArea");
-          if (item.type == "teaser") {
-            node.innerHTML = "<h2>" + item.header + "</h2>" + "<h3>" + item.subheader + "</h3>" + 
-            "<p>" + item.content + "</p>" + "<p>" + item.subcontent + "</p>";
+          if (item.type == "teaser" || item.type == "content") {
+            node.innerHTML = "<h2>" + item.header + "</h2>" + "<h3>" + subHeader + "</h3>" + 
+            "<p>" + idContent + "</p>" + "<p>" + subContent + "</p>";
+          } else if (item.type == "sub-content") {
+            node.innerHTML = "THIS IS SUB-CONTENT";
           }
           else {
             node.innerHTML = "Type: " + item.type + "<br />Population: " + item.population + "<br />Area: " + item.area + "<br />";
           }
+          // testing
+          console.log("content: " + idContent);
         };
       }
     

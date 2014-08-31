@@ -75,7 +75,7 @@
             "<p>" + idContent + "</p>" + "<p>" + subContent + "</p>";
           } else if (item.type == "subcontent") {
             if(typeof(item.layerid) === 'object'){
-              node.innerHTML = "<h4>Layer Description</h4>" + subContent;
+              node.innerHTML = "<h4>Layer Description: " + item.name + "</h4>" + subContent;
             } else {
               node.innerHTML = subContent;
             }

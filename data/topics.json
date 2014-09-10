@@ -36,4 +36,9 @@
               { "id": "FPA", "name":"Parcels", "link":"#", "layerid":"3", "type":"subcontent", "subcontent":"Parcels is the Tax Parcel polygon layer."},
               { "id": "FTB", "name":"Town Boundary", "link":"#", "layerid":"4", "type":"subcontent", "subcontent":"Town Boundary is the political boundary polygon layer for the 9 municipalities in the County."},
               { "id": "FCB", "name":"County Boundary", "link":"#", "layerid":"5", "type":"subcontent", "subcontent":"The County Boundary is the political boundary polygon layer for Garrett County."},
+            { "id": "MSMT", "name":"Measurement Map", "link":"#", "type":"teaser", "header":"Measurement Map", "subheader":"Measure Parcels and other Features", "content":"This map can be used for measuring parcels or any other feature visible in the map. When the map starts, the measurement dialog is open in the upper right section of the map. Click one of the icons. The icon on the left is for measuring area, the middle icon measures length, and the rightmost icon is for getting latitude and longitude. Use the control key (or cmd key on a mac) to snap to parcel features. When measuring area or length, click once to start or continue a line or polygon, and then double-click to end. Street centerlines are visible and parcels and addresses become visible when you zoom in. When these layers are clicked, information is returned in a popup window.",
+                "children":[{"_reference":"M_LAY"}] },
+            { "id": "M_LAY", "name":"Layers", "link":"$LIST", "type":"content", "header":"Layers in the Planning and Zoning Map", 
+                "content":"#",
+                "children":[{"_reference":"F_ADDR"}, {"_reference":"F_CL"}, {"_reference":"FPA"}] },                
 ]}

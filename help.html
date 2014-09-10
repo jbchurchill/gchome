@@ -41,6 +41,7 @@
         var subHeader = "";
         var idContent = "";
         var subContent = "";
+        var serviceLink = "";
         if(typeof(item.subheader) === 'object'){
           subHeader = item.subheader;
         }
@@ -75,8 +76,15 @@
             node.innerHTML = "<h2>" + item.header + "</h2>" + "<h3>" + subHeader + "</h3>" + 
             "<p>" + idContent + "</p>" + "<p>" + subContent + "</p>";
           } else if (item.type == "subcontent") {
-            if(typeof(item.layerid) === 'object'){
-              node.innerHTML = "<h4>Layer Description: " + item.name + "</h4>" + subContent;
+            if(typeof(item.layerid) === 'object') {
+              if (item.service == "Parcels_and_Zoning") {
+                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/P_and_Z/Parcels_and_Zoning/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
+              } else if (item.service == "FEMA") {
+                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/FEMA/Flood_Hazard/MapServer" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
+              } else if (item.service == "Sensitive_Areas") {
+                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/Sensitive_Areas/Sensitive_Areas/MapServer" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
+              }
+              node.innerHTML = "<h4>Layer Description: " + item.name + "</h4>" + subContent + serviceLink;
             } else {
               node.innerHTML = subContent;
             }
@@ -85,7 +93,7 @@
             node.innerHTML = "This should not occur";
           }
           // testing
-          console.log("content: " + idContent);
+          // console.log("content: " + idContent);
         };
       }
     

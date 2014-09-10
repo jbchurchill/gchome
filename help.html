@@ -80,9 +80,9 @@
               if (item.service == "Parcels_and_Zoning") {
                 serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/P_and_Z/Parcels_and_Zoning/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
               } else if (item.service == "FEMA") {
-                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/FEMA/Flood_Hazard/MapServer" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
+                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/FEMA/Flood_Hazard/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
               } else if (item.service == "Sensitive_Areas") {
-                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/Sensitive_Areas/Sensitive_Areas/MapServer" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
+                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/Sensitive_Areas/Sensitive_Areas/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
               }
               node.innerHTML = "<h4>Layer Description: " + item.name + "</h4>" + subContent + serviceLink;
             } else {
@@ -135,7 +135,7 @@
       <div data-dojo-type="dijit/layout/ContentPane" id="cptop"
         data-dojo-props="region: 'top'">
         <img src="images/yourLOGO.gif" width="64" height="48" alt="Garrett County Logo" />
-        <h1>Garrett County WebMap &#045; Help Documentation</h1>
+        <h1>Garrett County WebMap &#045; Help &amp; Documentation</h1>
       </div><!-- #cp CONTENT PANE -->
         <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'" title="ContentArea" id="cpInnerContentArea">
         </div>

@@ -42,13 +42,22 @@
         var idContent = "";
         var subContent = "";
         var serviceLink = "";
-        if(typeof(item.subheader) === 'object'){
+        if(typeof(item.type) === 'object') {
+          if (item.type == "teaser") {
+            // alert("WASSUP HOMEY!");
+            console.log(this.model.getLabel(item));
+            // _onExpandoClick(item.id);
+            // this._TreeNode.expand();
+            // _onExpandoClick({node: nodeWidget});
+          }
+        }
+        if(typeof(item.subheader) === 'object') {
           subHeader = item.subheader;
         }
-        if(typeof(item.subcontent) === 'object'){
+        if(typeof(item.subcontent) === 'object') {
           subContent = item.subcontent;
         }
-        if(typeof(item.content) === 'object'){
+        if(typeof(item.content) === 'object') {
           // If content is set to "#", then set the content to a list of the children.
           if (item.link == "$LIST") {
             numChildren = item.children.length;
@@ -152,7 +161,21 @@
   
             <div data-dojo-type="dijit/layout/ContentPane" title="Topics" data-dojo-props="region:'center'" style="width:300px; margin-top:0; padding:0;">
             
-              <div dojoType="dijit.Tree" store="continentStore" query="{type:'teaser'}" data-dojo-props="onClick: doClick, openOnClick:false">
+              <div dojoType="dijit.Tree" store="continentStore" query="{type:'teaser'}" data-dojo-props="onClick: doClick, openOnClick:true">
+                <script type="dojo/method" data-dojo-event="onOpen" data-dojo-args="item">
+                  var node = document.getElementById("cpInnerContentArea");
+                  console.log(item.type);
+                  
+                  if (item.type == "teaser" || item.type == "content") {
+                    // doClick(item);
+                    // node.innerHTML = "<h2>" + item.header + "</h2>" + 
+                    node.innerHTML = "<h2>" + item.header + "</h2>" + "<h3>" + item.subheader + "</h3>" + 
+                    "<p>" + item.content + "</p>" + "<p>" + item.subcontent + "</p>";
+                  }
+                  
+                  // node.innerHTML = "SHAZAM";
+            	    // console.log("Open of node " + (continentStore.getLabel(item) || "root"));
+            	  </script>
               </div>
               </div>
             </div><!-- Topics -->

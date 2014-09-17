@@ -43,17 +43,6 @@
         var subContent = "";
         var serviceLink = "";
         var numChildren;
-        /* 
-        if(typeof(item.type) === 'object') {
-          if (item.type == "teaser") {
-            // alert("WASSUP HOMEY!");
-            console.log(this.model.getLabel(item));
-            // _onExpandoClick(item.id);
-            // this._TreeNode.expand();
-            // _onExpandoClick({node: nodeWidget});
-          }
-        }
-        */
         if(typeof(item.subheader) === 'object') {
           subHeader = item.subheader;
         }
@@ -90,11 +79,11 @@
           } else if (item.type == "subcontent") {
             if(typeof(item.layerid) === 'object') {
               if (item.service == "Parcels_and_Zoning") {
-                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/P_and_Z/Parcels_and_Zoning/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
+                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/P_and_Z/Parcels_and_Zoning/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />";
               } else if (item.service == "FEMA") {
-                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/FEMA/Flood_Hazard/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
+                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/FEMA/Flood_Hazard/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />";
               } else if (item.service == "Sensitive_Areas") {
-                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/Sensitive_Areas/Sensitive_Areas/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
+                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/Sensitive_Areas/Sensitive_Areas/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />";
               }
               node.innerHTML = "<h4>Layer Description: " + item.name + "</h4>" + subContent + serviceLink;
             } else {
@@ -106,7 +95,7 @@
           }
           // testing
           // console.log("content: " + idContent);
-        };
+        }
       }
     
     require([
@@ -166,18 +155,6 @@
             
               <div dojoType="dijit.Tree" id="thisTree" store="continentStore" query="{type:'teaser'}" data-dojo-props="onClick: doClick, openOnClick:true">
                 <script type="dojo/method" data-dojo-event="onOpen" data-dojo-args="item">
-                  // doClick; // WHAT I REALLY WANT TO HAPPEN
-                  /*
-                  require([
-                  "dojo/on"
-                  ], function(on){
-                    var signal = on(document.getElementById(thisTree), "click", function() {
-                      doClick;
-                    });
-                    // signal.remove();
-                  });
-                  */
-                  
                   var idContent;
                   var subContent = "";
                   var subHeader = "";
@@ -209,56 +186,32 @@
                     } else {
                       idContent = ""; // link is not "$LIST" or "#"
                     }
-                  }                
-        // NOW SET INNER HTML
-        if(typeof(item.link) === 'object'){
-          // location.href = item.link;
-          node = document.getElementById("cpInnerContentArea");
-          if (item.type == "teaser" || item.type == "content") {
-            node.innerHTML = "<h2>" + item.header + "</h2>" + "<h3>" + subHeader + "</h3>" + 
-            "<p>" + idContent + "</p>" + "<p>" + subContent + "</p>";
-          } else if (item.type == "subcontent") {
-            if(typeof(item.layerid) === 'object') {
-              if (item.service == "Parcels_and_Zoning") {
-                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/P_and_Z/Parcels_and_Zoning/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
-              } else if (item.service == "FEMA") {
-                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/FEMA/Flood_Hazard/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
-              } else if (item.service == "Sensitive_Areas") {
-                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/Sensitive_Areas/Sensitive_Areas/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
-              }
-              node.innerHTML = "<h4>Layer Description: " + item.name + "</h4>" + subContent + serviceLink;
-            } else {
-              node.innerHTML = subContent;
-            }
-          }
-          else {
-            node.innerHTML = "This should not occur";
-          }
-        };        // NOW SET INNER HTML
-        if(typeof(item.link) === 'object'){
-          // location.href = item.link;
-          node = document.getElementById("cpInnerContentArea");
-          if (item.type == "teaser" || item.type == "content") {
-            node.innerHTML = "<h2>" + item.header + "</h2>" + "<h3>" + subHeader + "</h3>" + 
-            "<p>" + idContent + "</p>" + "<p>" + subContent + "</p>";
-          } else if (item.type == "subcontent") {
-            if(typeof(item.layerid) === 'object') {
-              if (item.service == "Parcels_and_Zoning") {
-                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/P_and_Z/Parcels_and_Zoning/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
-              } else if (item.service == "FEMA") {
-                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/FEMA/Flood_Hazard/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
-              } else if (item.service == "Sensitive_Areas") {
-                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/Sensitive_Areas/Sensitive_Areas/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />"
-              }
-              node.innerHTML = "<h4>Layer Description: " + item.name + "</h4>" + subContent + serviceLink;
-            } else {
-              node.innerHTML = subContent;
-            }
-          }
-          else {
-            node.innerHTML = "This should not occur";
-          }
-        };
+                  }
+                  // NOW SET INNER HTML
+                  if(typeof(item.link) === 'object'){
+                    // location.href = item.link;
+                    node = document.getElementById("cpInnerContentArea");
+                    if (item.type == "teaser" || item.type == "content") {
+                      node.innerHTML = "<h2>" + item.header + "</h2>" + "<h3>" + subHeader + "</h3>" + 
+                      "<p>" + idContent + "</p>" + "<p>" + subContent + "</p>";
+                    } else if (item.type == "subcontent") {
+                      if(typeof(item.layerid) === 'object') {
+                        if (item.service == "Parcels_and_Zoning") {
+                          serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/P_and_Z/Parcels_and_Zoning/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />";
+                        } else if (item.service == "FEMA") {
+                          serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/FEMA/Flood_Hazard/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />";
+                        } else if (item.service == "Sensitive_Areas") {
+                          serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/Sensitive_Areas/Sensitive_Areas/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />";
+                        }
+                        node.innerHTML = "<h4>Layer Description: " + item.name + "</h4>" + subContent + serviceLink;
+                      } else {
+                        node.innerHTML = subContent;
+                      }
+                    }
+                    else {
+                      node.innerHTML = "This should not occur";
+                    }
+                  }
 
             	  </script>
               </div>

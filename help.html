@@ -90,6 +90,8 @@
                 serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/Sensitive_Areas/Sensitive_Areas/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />";
               } else if (item.service == "iMap_Imagery") {
                 serviceLink = "<br /><br />This Map Service is created by <a href=\"http://imap.maryland.gov/\">MD iMap</a><br /><br /><a href=\"http://geodata.md.gov/imap/rest/services/Imagery/MD_SixInchImagery/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />";
+              } else if (item.service == "Contours_and_Plan") {
+                serviceLink = "<br /><br /><a href=\"http://gis.garrettcounty.org:6080/arcgis/rest/services/Contours_and_Plan/Contours_and_Plan/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />";
               }
               node.innerHTML = "<h4>Layer Description: " + item.name + "</h4>" + subContent + serviceLink;
             } else {

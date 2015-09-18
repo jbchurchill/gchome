@@ -93,6 +93,9 @@
                 serviceLink = "<br /><br />This Map Service is created by <a href=\"http://imap.maryland.gov/\">MD iMap</a><br /><br /><a href=\"http://geodata.md.gov/imap/rest/services/Imagery/MD_SixInchImagery/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />";
               } else if (item.service == "Contours_and_Plan") {
                 serviceLink = "<br /><br /><a href=\"https://maps.garrettcounty.org/arcweb/rest/services/Contours_and_Plan/Contours_and_Plan/MapServer/" + item.layerid + "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />";
+              } else if (item.service == "TAX_MAP_GRID") {
+                serviceLink = "<br /><br /><a href=\"https://maps.garrettcounty.org/arcweb/rest/services/P_and_Z/TAX_MAP_GRID/MapServer/" + item.layerid + 
+                "\">Service Link</a> <span class=\"geeky\">(<span class=\"warning\">warning:</span> geeky stuff here)</span><br />";
               }
               node.innerHTML = "<h4>Layer Description: " + item.name + "</h4>" + subContent + serviceLink;
             } else {
@@ -153,11 +156,7 @@
     <div data-dojo-type="dijit/layout/BorderContainer" 
          data-dojo-props="design:'headline', gutters:false" 
          style="width:100%;height:100%;margin:0;">
-<!--      <div data-dojo-type="dijit/layout/ContentPane" id="cptop"
-        data-dojo-props="region: 'top'">
-        <img src="images/yourLOGO.gif" width="64" height="48" alt="Garrett County Logo" />
-        <h1>Garrett County WebMap &#045; Help &amp; Documentation</h1>
-      </div> #cp CONTENT PANE -->
+
         <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'" title="ContentArea" id="cpInnerContentArea">
         </div>
 
@@ -172,6 +171,10 @@
             <div data-dojo-type="dijit/layout/ContentPane" title="Topics" data-dojo-props="region:'center'" style="width:300px; margin-top:0; padding:0;">
             
               <div dojoType="dijit.Tree" id="thisTree" store="continentStore" query="{type:'teaser'}" data-dojo-props="onClick: doClick, openOnClick:true">
+                <!-- IMPORTANT Do Not Delete or Edit the following script tag w/o doing a lot of research -->
+                <!-- IMPORTANT Removing it has caused help links to main maps to ***stop working*** -->
+                <!-- IMPORTANT Such as the link to "PZ Map", "FEMA Map", "Measurement Map", "Printable Map" etc. -->
+                <!-- IMPORTANT And make no mistake, the code in the header section is also ***required*** -->
                 <script type="dojo/method" data-dojo-event="onOpen" data-dojo-args="item">
                   var idContent;
                   var subContent = "";
@@ -232,6 +235,7 @@
                   }
 
             	  </script>
+
               </div>
               </div>
             </div><!-- Topics -->
@@ -241,4 +245,4 @@
     </div><!-- Border Container -->
 
 	
-<?php include('includes/.inc.footer.php'); ?>
+<?php include('includes/inc.footer.php'); ?>
